@@ -12,5 +12,15 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
+
+Route::get('/admin_categoria', function () {
+    return view('admin/categoria');
+});
+
+// Rutas API categoria
+Route::get('/api/categoria/{id?}', 'CategoriaController@index');
+Route::post('/api/categoria', 'CategoriaController@store');
+Route::post('/api/categoria/{id}', 'CategoriaController@update');
+Route::delete('/api/categoria/{id}', 'CategoriaController@destroy');
