@@ -10,11 +10,11 @@ app.controller('CategoriaController', function($scope, $http, API_URL) {
       $scope.modalstate = modalstate;
       switch(modalstate) {
         case 'add':
-          $scope.form_title = "Añadir Categoria";
-          $scope.categoria = null;
+          $scope.form_title = "Add Category";
+          angular.copy({}, $scope.categoria);
           break;
         case 'edit':
-          $scope.form_title = "Editar Categoria";
+          $scope.form_title = "Edit Category";
           $scope.id = id;
 
           $http.get(API_URL + 'categoria/' + id).success(function(response){
@@ -46,13 +46,13 @@ app.controller('CategoriaController', function($scope, $http, API_URL) {
       location.reload();
     }).error(function(response){
       console.log(response);
-      alert('Lo sentimos, ha ocurrido un error. Porfavor revise los detalles del log.');
+      alert('Sorry, An error has ocurred. Please check the log for details.');
     });
   }
 
  // Eliminar una categoria
  $scope.confirmDelete = function(id) {
-   var isConfirmDelete = confirm('Seguro que desea eliminar este registro?');
+   var isConfirmDelete = confirm('Are you sure you want to delete this record?');
    if (isConfirmDelete) {
      $http({
        method: 'DELETE',
@@ -63,7 +63,7 @@ app.controller('CategoriaController', function($scope, $http, API_URL) {
        location.reload();
      }).error(function(data){
        console.log(data);
-       alert('No se pudo eliminar.');
+       alert('Unable to delete.');
      });
    } else {
      return false;

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Categorias | Taskum Admin</title>
+    <title>Categories | Takum Admn</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -12,17 +12,37 @@
 
   </head>
   <body>
-
+    <header id="header">
+            <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse" id="myNavbar">
+                        <ul class="nav navbar-nav">
+                            <li><a class="active" href="#">Takum Gift</a></li>
+                            <li><a href="#">Categories</a></li>
+                            <li><a href="#">Products</a></li>
+                            <li><a href="#">Orders</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
     <div class="container">
-      <h2>Categorias</h2>
+      <h2>Categories</h2>
       <div ng-controller="CategoriaController">
         <table class="table table-striped">
           <thead>
             <tr>
               <th>ID</th>
-              <th>Nombre</th>
+              <th>Name</th>
               <th>
-                <button id="btn-add" class="btn btn-success btn-xs" ng-click="toggle('add', 0)">A&ntilde;adir Categoria</button>
+                <button id="btn-add" class="btn btn-success btn-xs" ng-click="toggle('add', 0)">Add Category</button>
               </th>
             </tr>
           </thead>
@@ -54,17 +74,17 @@
               <div class="modal-body">
                 <form name="frmCategoria" class="form-horizontal" novalidate="">
                   <div class="form-group">
-                    <label class="col-sm-3 control-label">Nombre</label>
+                    <label class="col-sm-3 control-label">Name</label>
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" id="categoriaNombre" name="categoriaNombre" placeholder="Nombre de la categoria." value="@{{nombre}}" ng-model="categoria.nombre" ng-required="true">
-                      <span ng-show="frmCategoria.categoriaNombre.$invalid && frmCategoria.categoriaNombre.$touched">El nombre de la categoria es requerido.</span>
+                      <input type="text" class="form-control" id="categoriaNombre" name="categoriaNombre" placeholder="Category name." value="@{{nombre}}" ng-model="categoria.nombre" ng-required="true">
+                      <span ng-show="frmCategoria.categoriaNombre.$invalid && frmCategoria.categoriaNombre.$touched">Name required.</span>
                     </div>
                   </div>  
                     
                 </form>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-primary" id="btn-save" ng-click="save(modalstate, id)" ng-disabled="frmCategoria.$invalid">Guardar</button>
+                <button type="button" class="btn btn-primary" id="btn-save" ng-click="save(modalstate, id)" ng-disabled="frmCategoria.$invalid">Save</button>
               </div>
             </div>
           </div>
@@ -80,6 +100,8 @@
     <!-- Aangular Material desde CDN -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.1/angular-material.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.14/angular-route.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
 
     <!-- Angular Application Scripts  -->
     <script src="{{ asset('angular/app.js') }}"></script>

@@ -38,7 +38,7 @@ class ProductoController extends Controller
         $producto->categoria_id = $request->input('categoria_id');
         $producto->estado = $request->input('estado');
         $producto->save();
-        return 'Producto guardado con exito, Id ' . $producto->id;
+        return 'Product record successfully created with Id ' . $producto->id;
     }
 
     /**
@@ -62,7 +62,7 @@ class ProductoController extends Controller
         $producto->categoria_id = $request->input('categoria_id');
         $producto->estado = $request->input('estado');
         $producto->save();
-        return 'Producto actualizado con exito, Id ' . $producto->id;
+        return 'Product record successfully updated with Id ' . $producto->id;
     }
 
     /**
@@ -71,6 +71,6 @@ class ProductoController extends Controller
     public function destroy($id)
     {
         $producto = Producto::find($id)->delete();
-        return 'Producto eliminado con exito.';
+        return 'Product record successfully deleted.';
     }
 }

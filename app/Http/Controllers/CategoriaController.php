@@ -28,7 +28,7 @@ class CategoriaController extends Controller
         $categoria = new Categoria;
         $categoria->nombre = $request->input('nombre');
         $categoria->save();
-        return 'Categoria guardada con exito, Id ' . $categoria->id;
+        return 'Category record successfully created with id' . $categoria->id;
     }
 
     /**
@@ -48,7 +48,7 @@ class CategoriaController extends Controller
         $categoria = Categoria::find($id);
         $categoria->nombre = $request->input('nombre');
         $categoria->save();
-        return 'Categoria actualizado con exito, Id ' . $categoria->id;
+        return 'Category record successfully updated with id ' . $categoria->id;
     }
 
     /**
@@ -57,6 +57,6 @@ class CategoriaController extends Controller
     public function destroy($id)
     {
         $categoria = Categoria::find($id)->delete();
-        return 'Categoria eliminada con exito.';
+        return 'Category record successfully deleted.';
     }
 }

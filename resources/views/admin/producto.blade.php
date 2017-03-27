@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Productos | Taskum Admin</title>
+    <title>Products | Takum Admn</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -14,19 +14,19 @@
   <body>
 
     <div class="container">
-      <h2>Productos</h2>
+      <h2>Products</h2>
       <div ng-controller="ProductoController">
         <table class="table table-striped">
           <thead>
             <tr>
               <th>ID</th>
-              <th>Titulo</th>
-              <th>Descripci&oacute;n</th>
-              <th>Valor</th>
-              <th>Categoria</th>
-              <th>Estado</th>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Price</th>
+              <th>Category</th>
+              <th>State</th>
               <th>
-                <button id="btn-add" class="btn btn-success btn-xs" ng-click="toggle('add', 0)">A&ntilde;adir Producto</button>
+                <button id="btn-add" class="btn btn-success btn-xs" ng-click="toggle('add', 0)">Add Product</button>
               </th>
             </tr>
           </thead>
@@ -62,47 +62,47 @@
               <div class="modal-body">
                 <form name="frmProducto" class="form-horizontal" novalidate="">
                   <div class="form-group">
-                    <label class="col-sm-2 control-label">Titulo</label>
+                    <label class="col-sm-2 control-label">Title</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="productoTitulo" name="productoTitulo" placeholder="Titulo del producto." value="@{{titulo}}" ng-model="producto.titulo" ng-required="true">
-                      <span ng-show="frmProducto.productoTitulo.$invalid && frmProducto.productoTitulo.$touched">El titulo del producto es requerido.</span>
+                      <input type="text" class="form-control" id="productoTitulo" name="productoTitulo" placeholder="Product title." value="@{{titulo}}" ng-model="producto.titulo" ng-required="true">
+                      <span ng-show="frmProducto.productoTitulo.$invalid && frmProducto.productoTitulo.$touched">Title required.</span>
                     </div>
                   </div>  
 
                   <div class="form-group">
-                    <label class="col-sm-2 control-label">Descripci&oacute;n</label>
+                    <label class="col-sm-2 control-label">Description</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="productoDescripcion" name="productoDescripcion" placeholder="Descripci&oacute;n del producto." value="@{{descripcion}}" ng-model="producto.descripcion" ng-required="true">
-                      <span ng-show="frmProducto.productoDescripcion.$invalid && frmProducto.productoDescripcion.$touched">La descripci&oacute;n del producto es requerida.</span>
+                      <input type="text" class="form-control" id="productoDescripcion" name="productoDescripcion" placeholder="Product description." value="@{{descripcion}}" ng-model="producto.descripcion" ng-required="true">
+                      <span ng-show="frmProducto.productoDescripcion.$invalid && frmProducto.productoDescripcion.$touched">Description required.</span>
                     </div>
                   </div> 
 
                   <div class="form-group">
-                    <label class="col-sm-2 control-label">Categoria</label>
+                    <label class="col-sm-2 control-label">Category</label>
                     <div class="col-sm-10">                 
                       <select class="form-control" id="productoCategoria" name="productoCategoria" ng-model="producto.categoria_id" ng-options="categoria.id as categoria.nombre for categoria in categorias" required></select>
-                      <span ng-show="frmProducto.productoCategoria.$error.required && frmProducto.productoCategoria.$touched">La categoria es requerida.</span>
+                      <span ng-show="frmProducto.productoCategoria.$error.required && frmProducto.productoCategoria.$touched">Category required.</span>
                     </div>                    
                   </div> 
 
                   <div class="form-group">
-                    <label class="col-sm-2 control-label">Valor</label>
+                    <label class="col-sm-2 control-label">Price</label>
                     <div class="col-sm-4">
-                      <input type="text" class="form-control" id="productoValor" name="productoValor" placeholder="Valor del producto." value="@{{valor}}" ng-model="producto.valor" ng-required="true">
-                      <span ng-show="frmProducto.productoValor.$invalid && frmProducto.productoValor.$touched">El valor es requerido.</span>
+                      <input type="text" class="form-control" id="productoValor" name="productoValor" placeholder="Product price." value="@{{valor}}" ng-model="producto.valor" ng-required="true">
+                      <span ng-show="frmProducto.productoValor.$invalid && frmProducto.productoValor.$touched">Price required.</span>
                     </div>
 
-                    <label class="col-sm-2 control-label">Estado</label>
+                    <label class="col-sm-2 control-label">State</label>
                     <div class="col-sm-4">
                       <select class="form-control" id="productoEstado" name="productoEstado" ng-model="producto.estado" ng-options="x for (x, y) in productos.estados" required></select>
-                      <span ng-show="frmProducto.productoEstado.$error.required && frmProducto.productoEstado.$touched">El estado es requerido.</span>
+                      <span ng-show="frmProducto.productoEstado.$error.required && frmProducto.productoEstado.$touched">State required.</span>
                     </div>
                   </div> 
                     
                 </form>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-primary" id="btn-save" ng-click="save(modalstate, id)" ng-disabled="frmProducto.$invalid">Guardar</button>
+                <button type="button" class="btn btn-primary" id="btn-save" ng-click="save(modalstate, id)" ng-disabled="frmProducto.$invalid">Save</button>
               </div>
             </div>
           </div>

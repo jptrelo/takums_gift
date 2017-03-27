@@ -12,25 +12,47 @@
 */
 
 Route::get('/', function () {
+    return view('login');
+});
+
+Route::get('/index', function () {
     return view('index');
 });
 
-Route::get('/admin_categorias', function () {
-    return view('admin/categoria');
+Route::group(['prefix' => 'admin'], function()
+{
+
+	Route::get('categories', function () {
+	    return view('admin.categoria');
+	});
+
+	Route::get('products', function () {
+	    return view('admin.producto');
+	});
+
 });
 
-Route::get('/admin_productos', function () {
-    return view('admin/producto');
+Route::group(['middleware' => 'cors'], function () {
+    Route::post("api/signin", 'UsuarioPortalController@login');    
 });
 
-// Rutas API categoria
-Route::get('/api/categoria/{id?}', 'CategoriaController@index');
-Route::post('/api/categoria', 'CategoriaController@store');
-Route::post('/api/categoria/{id}', 'CategoriaController@update');
-Route::delete('/api/categoria/{id}', 'CategoriaController@destroy');
+Route::group(['prefix' => 'api'], function()
+{
+	// Rutas API categoria
+	Route::get('categoria/{id?}', 'CategoriaController@index');
+	Route::post('categoria', 'CategoriaController@store');
+	Route::post('categoria/{id}', 'CategoriaController@update');
+	Route::delete('categoria/{id}', 'CategoriaController@destroy');
 
-// Rutas API Producto
-Route::get('/api/producto/{id?}', 'ProductoController@index');
-Route::post('/api/producto', 'ProductoController@store');
-Route::post('/api/producto/{id}', 'ProductoController@update');
-Route::delete('/api/producto/{id}', 'ProductoController@destroy');
+	// Rutas API Producto
+	Route::get('producto/{id?}', 'ProductoController@index');
+	Route::post('producto', 'ProductoController@store');
+	Route::post('producto/{id}', 'ProductoController@update');
+	Route::delete('producto/{id}', 'ProductoController@destroy');
+
+
+	// Rutas API Usuario Portal
+	Route::get("signin/usuario_portal", 'UsuarioPortalController@getAuthenticatedUser');
+
+});
+

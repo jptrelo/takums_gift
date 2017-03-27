@@ -20,7 +20,7 @@ class CreateProductoTable extends Migration
             $table->text('descripcion');
             $table->decimal('valor', 8, 2);
             $table->integer('categoria_id')->unsigned();
-            $table->integer('estado')->default(Config::get('constants.estados.ACTIVO'))->comment('Activo: 1; Inactivo: 0.');
+            $table->integer('estado')->default(Config::get('constants.estados.ON'))->comment('ON: 1; OFF: 0.');
             $table->timestamps();
         });
 

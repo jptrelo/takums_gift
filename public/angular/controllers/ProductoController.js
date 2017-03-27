@@ -16,11 +16,11 @@ app.controller('ProductoController', function($scope, $http, API_URL) {
       });
       switch(modalstate) {
         case 'add':
-          $scope.form_title = "Añadir Producto";
-          $scope.producto = null;
+          $scope.form_title = "Add Product";
+          angular.copy({}, $scope.producto);
           break;
         case 'edit':
-          $scope.form_title = "Editar Producto";
+          $scope.form_title = "Edit Product";
           $scope.id = id;          
           $http.get(API_URL + 'producto/' + id).success(function(response){
             console.log(response);
@@ -56,13 +56,13 @@ app.controller('ProductoController', function($scope, $http, API_URL) {
       location.reload();
     }).error(function(response){
       console.log(response);
-      alert('Lo sentimos, ha ocurrido un error. Porfavor revise los detalles del log.');
+      alert('Sorry, An error has ocurred. Please check the log for details.');
     });
   }
 
  // Eliminar un producto
  $scope.confirmDelete = function(id) {
-   var isConfirmDelete = confirm('Seguro que desea eliminar este registro?');
+   var isConfirmDelete = confirm('Are you sure you want to delete this record?');
    if (isConfirmDelete) {
      $http({
        method: 'DELETE',
@@ -73,7 +73,7 @@ app.controller('ProductoController', function($scope, $http, API_URL) {
        location.reload();
      }).error(function(data){
        console.log(data);
-       alert('No se pudo eliminar.');
+       alert('Unable to delete.');
      });
    } else {
      return false;

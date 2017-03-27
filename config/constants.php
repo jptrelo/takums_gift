@@ -2,7 +2,7 @@
 
 return [
     'estados' => [
-        'ACTIVO' => 1,
-        'INACTIVO' => 0
+        'ON' => 1,
+        'OFF' => 0
     ]
 ];
