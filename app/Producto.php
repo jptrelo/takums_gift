@@ -16,4 +16,9 @@ class Producto extends Model
     {
         return $this->belongsTo('App\Categoria', 'categoria_id');
     }
+
+    public function usuario_producto()
+    {
+        return $this->hasMany('App\UsuarioProducto');
+    }
 }

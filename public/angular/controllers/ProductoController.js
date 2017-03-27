@@ -1,4 +1,4 @@
-app.controller('ProductoController', function($scope, $http, API_URL) {
+app.controller('ProductoController', function($scope, $http, $localStorage, API_URL) {
   // Obtener lista de productos desde API
   $http.get(API_URL + "producto")
   .success(function(response){
@@ -58,6 +58,49 @@ app.controller('ProductoController', function($scope, $http, API_URL) {
       console.log(response);
       alert('Sorry, An error has ocurred. Please check the log for details.');
     });
+  }
+
+  //Guardar UsuarioProducto
+  $scope.saveUsuarioProducto = function(producto_id){
+    var isConfirmDelete = confirm('Are you sure you want to get this product?');
+    if (isConfirmDelete) {
+      var url = API_URL + "usuario_producto";
+      // Obtener los datos del Usuario Portal
+      $http.get(API_URL + "signin/usuario_portal", {
+        headers: {
+            "Authorization": 'Bearer ' + $localStorage.token
+        }
+      }).success(function(response){        
+
+        $scope.usuario = response;
+
+        var usuario_id = $scope.usuario.user.id;
+        var formData = {
+                         usuario_portal_id: usuario_id,
+                         producto_id: producto_id
+                     };
+        $http({
+          method: 'POST',
+          url: url,
+          data: $.param(formData),
+          headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).success(function(response){
+          console.log(response);
+          alert(response);
+          location.reload();
+        }).error(function(response){
+          console.log(response);
+          alert('Sorry, An error has ocurred. Please check the log for details.');
+        });
+
+      }).error(function(response){
+        console.log(response);
+      });
+
+      
+    } else {
+      return false;
+    }
   }
 
  // Eliminar un producto

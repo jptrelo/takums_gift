@@ -10,7 +10,7 @@ class Categoria extends Model
     protected $fillable = array('id','nombre');
 
     /**
-     * Obtener productos de la categoria relacionada
+     * Productos de la categoria relacionada
      */
     public function producto()
     {

@@ -28,4 +28,12 @@ class UsuarioPortal extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Obtener productos de la categoria relacionada
+     */
+    public function usuario_producto()
+    {
+        return $this->hasMany('App\UsuarioProducto');
+    }
 }

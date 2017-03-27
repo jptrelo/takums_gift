@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Categories | Takum Admn</title>
+    <title>User's Products | Takum Admn</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -34,61 +34,32 @@
             </nav>
     </header>
     <div class="container">
-      <h2>Categories</h2>
-      <div ng-controller="CategoriaController">
+      <h2>User's Products</h2>
+      <div ng-controller="UsuarioProductoController">
         <table class="table table-striped">
           <thead>
             <tr>
               <th>ID</th>
               <th>Name</th>
-              <th>
-                <button id="btn-add" class="btn btn-success btn-xs" ng-click="toggle('add', 0)">Add Category</button>
-              </th>
+              <th>Email</th>
+              <th>Product</th>
+              <th>&nbsp;</th>
             </tr>
           </thead>
           <tbody>
-            <tr ng-repeat="categoria in categorias">
-              <td>@{{ categoria.id }}</td>
-              <td>@{{ categoria.nombre }}</td>
-              <td>
-                <button class="btn btn-warning btn-xs btn-detail" ng-click="toggle('edit', categoria.id)">
-                  <span class="glyphicon glyphicon-edit"></span>
-                </button>
-                <button class="btn btn-danger btn-xs btn-delete" ng-click="confirmDelete(categoria.id)">
+            <tr ng-repeat="usuario_producto in usuario_productos">
+              <td>@{{ usuario_producto.id }}</td>
+              <td>@{{ usuario_producto.usuario_portal.nombre }}</td>
+              <td>@{{ usuario_producto.usuario_portal.email }}</td>
+              <td>@{{ usuario_producto.producto.titulo }}</td>
+              <td>                
+                <button class="btn btn-danger btn-xs btn-delete" ng-click="confirmDelete(usuario_producto.id)">
                   <span class="glyphicon glyphicon-trash"></span>
                 </button>
               </td>
             </tr>
           </tbody>
         </table>
-        <!-- show modal  -->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">×</span>
-                </button>
-                <h4 class="modal-title" id="myModalLabel">@{{form_title}}</h4>
-              </div>
-              <div class="modal-body">
-                <form name="frmCategoria" class="form-horizontal" novalidate="">
-                  <div class="form-group">
-                    <label class="col-sm-3 control-label">Name</label>
-                    <div class="col-sm-9">
-                      <input type="text" class="form-control" id="categoriaNombre" name="categoriaNombre" placeholder="Category name." value="@{{nombre}}" ng-model="categoria.nombre" ng-required="true">
-                      <span ng-show="frmCategoria.categoriaNombre.$invalid && frmCategoria.categoriaNombre.$touched">Name required.</span>
-                    </div>
-                  </div>  
-                    
-                </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-primary" id="btn-save" ng-click="save(modalstate, id)" ng-disabled="frmCategoria.$invalid">Save</button>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
 
@@ -105,6 +76,6 @@
 
     <!-- Angular Application Scripts  -->
     <script src="{{ asset('angular/app.js') }}"></script>
-    <script src="{{ asset('angular/controllers/CategoriaController.js') }}"></script>
+    <script src="{{ asset('angular/controllers/UsuarioProductoController.js') }}"></script>
   </body>
 </html>

@@ -9,8 +9,6 @@ var app = angular.module('app', [
 		           config.headers = config.headers || {};
 		           if ($localStorage.token) {
 		               config.headers.Authorization = 'Bearer ' + $localStorage.token;
-		               $location.path('/index');
-		               console.log("hola");
 		           }
 		           return config;
 		       },

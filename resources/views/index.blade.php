@@ -41,7 +41,8 @@
                   <span><strong>@{{ producto.valor | currency:"USD$" }}</strong></span>
                 </div>                  
                 <div class="col-md-4 text-center pull-right">
-                  <button class="btn btn-lg btn-add-to-cart"><span class="glyphicon glyphicon-shopping-cart"></span>   I want this.</button>           
+                  <button class="btn btn-lg btn-add-to-cart" ng-click="saveUsuarioProducto(producto.id)">
+                    <span class="glyphicon glyphicon-shopping-cart"></span>   I want this.</button>           
                 </div>
               </div>
             </div>

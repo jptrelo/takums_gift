@@ -30,6 +30,10 @@ Route::group(['prefix' => 'admin'], function()
 	    return view('admin.producto');
 	});
 
+	Route::get('usuario_producto', function () {
+	    return view('admin.usuario_producto');
+	});
+
 });
 
 Route::group(['middleware' => 'cors'], function () {
@@ -49,6 +53,12 @@ Route::group(['prefix' => 'api'], function()
 	Route::post('producto', 'ProductoController@store');
 	Route::post('producto/{id}', 'ProductoController@update');
 	Route::delete('producto/{id}', 'ProductoController@destroy');
+
+	// Rutas API Usuario Producto
+	Route::get('usuario_producto/{id?}', 'UsuarioProductoController@index');
+	Route::post('usuario_producto', 'UsuarioProductoController@store');
+	Route::post('usuario_producto/{id}', 'UsuarioProductoController@update');
+	Route::delete('usuario_producto/{id}', 'UsuarioProductoController@destroy');
 
 
 	// Rutas API Usuario Portal
