@@ -92,7 +92,7 @@
                   <div class="form-group">
                     <label class="col-sm-2 control-label">Description</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="productoDescripcion" name="productoDescripcion" placeholder="Product description." value="@{{descripcion}}" ng-model="producto.descripcion" ng-required="true">
+                      <textarea class="form-control" id="productoDescripcion" name="productoDescripcion" placeholder="Product description." value="@{{descripcion}}" ng-model="producto.descripcion" ng-required="true"></textarea>                      
                       <span ng-show="frmProducto.productoDescripcion.$invalid && frmProducto.productoDescripcion.$touched">Description required.</span>
                     </div>
                   </div> 

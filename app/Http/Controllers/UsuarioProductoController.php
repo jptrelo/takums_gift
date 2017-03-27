@@ -29,7 +29,7 @@ class UsuarioProductoController extends Controller
         $usuario_producto->usuario_portal_id = $request->input('usuario_portal_id');
         $usuario_producto->producto_id = $request->input('producto_id');
         $usuario_producto->save();
-        return 'Product record successfully created with Id ' . $usuario_producto->id;
+        return 'Product successfully asociated, Id ' . $usuario_producto->id;
     }
 
     /**
@@ -59,6 +59,6 @@ class UsuarioProductoController extends Controller
     public function destroy($id)
     {
         $usuario_producto = UsuarioProducto::find($id)->delete();
-        return 'Product record successfully deleted.';
+        return 'Record successfully deleted.';
     }
 }
